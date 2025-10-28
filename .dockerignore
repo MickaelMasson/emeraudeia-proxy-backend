@@ -1,0 +1,13 @@
+# Ignorer le dossier des dépendances locales (le conteneur installe les siennes)
+node_modules
+
+# Ignorer le dossier Git
+.git
+
+# Ignorer les fichiers .env (qui ne doivent jamais être dans une image)
+.env
+.env.*
+
+# Fichiers de système d'exploitation
+.DS_Store
+Thumbs.db

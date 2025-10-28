@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  proxy-backend:
+    build: .
+    restart: always
+    environment:
+      # Coolify lira ces ${...} et les remplacera par les
+      # "Environment Variables" de votre Projet.
+      N8N_WEBHOOK_URL: '${N8N_WEBHOOK_URL}'
+      N8N_JWT_SECRET: '${N8N_JWT_SECRET}'
+      FRONTEND_URL: '${FRONTEND_URL}'
+      PORT: '3000'
+    ports:
+      - "3000"
+    healthcheck:
+      # Ceci est la section corrigée.
+      # Notez l'indentation (6 espaces) pour chaque ligne ici.
+      test: ["CMD", "curl", "-f", "http://localhost:3000/healthz"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 10s
